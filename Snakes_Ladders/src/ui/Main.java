@@ -1,12 +1,19 @@
 package ui;
 
+import java.io.IOException;
+
 public class Main {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//12345678
-		
-		//prueba de git 2
+	
+	private static Menu menu;
+	
+	public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException{
+		Main objMain = new Main();
+		menu = new Menu();
+		objMain.getMenu();
 	}
+	
 
+	public Menu getMenu() {
+		return menu;
+	}
 }
