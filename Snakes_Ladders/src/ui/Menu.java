@@ -65,7 +65,7 @@ public class Menu {
 					selectOption();
 				}
 			}else {
-				System.out.println("\nGracias por usar la aplicacion :D.");
+				System.out.println("\nGracias por jugar ;)");
 			}
 
 		}catch(NumberFormatException nfe) {

@@ -125,8 +125,7 @@ public class SnakesAndLadders{
 		return message;
 	}
 
-	ram j is the second position of the node. position != null.
-	 */
+	
 
 	private void asingPosition(int position, int i,int j) {
 
@@ -1014,7 +1013,7 @@ public class SnakesAndLadders{
 		this.matrixCols = matrixCols;
 	}
 
-	x	
+		
 	public BestPlayers getFirstPlayer() {
 		return firstPlayer;
 	}
