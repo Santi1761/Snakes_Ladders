@@ -12,24 +12,20 @@ import java.util.Random;
 
 public class SnakesAndLadders{
 
-	public final static String SAVE_PATH_FILE_PEOPLE = "data/scores.sal";
-
+	private static Player currentPlayer;
 	private Node root;
 	private BestPlayers firstPlayer;
-
+	public final static String SAVE_PATH_FILE_PEOPLE = "data/scores.sal";
+	private String symbols;
+	private static int verify = 0;
+	private static int numberPlayer;
+	private static int numberPlayerVerify;
 	private int matrixRows;
 	private int matrixCols;
 	private int snakes;
 	private int ladders;
 	private int players;
-	private String symbols;
-
-	private static int verify = 0;
-	private static int numberPlayer;
-	private static int numberPlayerVerify;
-	private static Player currentPlayer;
-
-	
+		
 
 	public SnakesAndLadders(int matrixRows, int matrixCols) {
 		this.matrixRows = matrixRows;
@@ -42,7 +38,6 @@ public class SnakesAndLadders{
 	}
 
 	
-
 	private void createNewMatrix() {
 
 		numberPlayer = 0;
@@ -51,7 +46,6 @@ public class SnakesAndLadders{
 		createNewRow(0,0,root);
 		asingPosition(0,matrixRows-1,0);
 	}
-
 
 
 	private void createNewRow(int i, int j, Node currentRootRow) {
@@ -66,7 +60,6 @@ public class SnakesAndLadders{
 			createNewRow(i+1,j,downRootRow);
 		}
 	}
-
 
 
 	private void createNewCol(int i, int j, Node previous, Node rowPrevious) {
@@ -88,7 +81,6 @@ public class SnakesAndLadders{
 	}
 
 
-
 	public void addPlayer(String name, int row, int col, int snakes, int ladders, int players, long score, char symbol, String otherPlayers) throws IOException, ClassNotFoundException {
 
 		loadData();
@@ -104,14 +96,12 @@ public class SnakesAndLadders{
 	}
 
 	
-
 	public String searchInOrder() throws ClassNotFoundException, IOException {
 		loadData();
 		return searchInOrder(firstPlayer);
 	}
 
 	
-
 	public String searchInOrder(BestPlayers player) {
 
 		String message = "";
@@ -126,7 +116,6 @@ public class SnakesAndLadders{
 	}
 
 	
-
 	private void asingPosition(int position, int i,int j) {
 
 		Node newNode = searchNode(i,j);
@@ -135,7 +124,6 @@ public class SnakesAndLadders{
 			asingNext(newNode,position+1);
 		}
 	}
-
 
 
 	private void asingNext(Node newNode, int position) {
@@ -150,7 +138,6 @@ public class SnakesAndLadders{
 	}
 
 	
-
 	private void asingPrev(Node newNode, int position) {
 
 		newNode.setPosition(position);
@@ -164,7 +151,6 @@ public class SnakesAndLadders{
 	}
 
 	
-
 	private void addPlayer(BestPlayers current, BestPlayers newPlayer) {
 
 		if(newPlayer.getScore() <= current.getScore()){
@@ -181,7 +167,6 @@ public class SnakesAndLadders{
 			}
 		}
 	}
-
 
 
 	public void addSettingSnake(int snakes, int i) {
@@ -204,7 +189,6 @@ public class SnakesAndLadders{
 		}
 	}
 
-
 	public void addSecondSnake(Node ladder, int row) {
 
 		int selectedRow = (int)Math.floor(Math.random()*(matrixRows-row));
@@ -219,7 +203,6 @@ public class SnakesAndLadders{
 			addSecondSnake(ladder,row);
 		}
 	}
-
 
 
 	public void addSettingLadders(int ladders) {
@@ -241,7 +224,6 @@ public class SnakesAndLadders{
 	}
 
 
-
 	private void addSecondladders(Node ladder, int row) {
 
 		int selectedRow = (int)Math.floor(Math.random()*(matrixRows));
@@ -258,13 +240,11 @@ public class SnakesAndLadders{
 	}
 
 
-
 	public Node searchNode(int row, int col) {
 		return searchNode(root, row, col);
 	}
 
 	
-
 	private Node searchNode(Node current, int row, int col) {
 
 		Node searched = null;
@@ -289,7 +269,6 @@ public class SnakesAndLadders{
 	}
 
 	
-
 	public boolean splitString(String settings) {
 
 		String setting[] = settings.split(" ");
@@ -374,7 +353,6 @@ public class SnakesAndLadders{
 		}
 		return stop;
 	}
-
 	
 
 	private void asignPlayers(Player player,int play,String players) {
@@ -393,7 +371,6 @@ public class SnakesAndLadders{
 			verify++;
 		}
 	}
-
 	
 
 	private void insertValuePlayer(Player current,int i,int cont) {
@@ -404,7 +381,6 @@ public class SnakesAndLadders{
 			insertValuePlayer(current.getNext(), i, cont+1);
 		}
 	}
-
 	
 
 	private void addSettingPlayers(Player first,String players,int index,int cont) {
@@ -423,7 +399,6 @@ public class SnakesAndLadders{
 			}
 		}
 	}
-
 	
 
 	private void verifySymbols(Player player,int players) {
@@ -436,14 +411,12 @@ public class SnakesAndLadders{
 	}
 
 
-
 	public void addSymbols(int index) {
 
 		selectSymbols(getFirst(),getFirst().getFirst(),index);
 	}
 
 		
-
 	private void selectSymbols(Node first,Player player,int index) {
 		char symbol = ' ';
 
@@ -526,7 +499,6 @@ public class SnakesAndLadders{
 			}
 		}
 	}
-
 	
 
 	private void asignSymbol(Player player, int index, char symbol) {
@@ -543,7 +515,6 @@ public class SnakesAndLadders{
 			}
 		}
 	}
-
 	
 
 	public void searchNext(Player player, char symbol) {
@@ -552,13 +523,7 @@ public class SnakesAndLadders{
 		}
 	}
 
-	/**
-	 * <b>name:</b> searchSymbols. <br>
-	 * Search a player by the symbol. <br>
-	 * <b>post:</b> a player has been searched by the symbol. <br>
-	 * @param player is the player to compared.
-	 * @param current is the player to will be changing. 
-	 */
+	
 	private void searchSymbols(Player player,Player current) {
 
 		if(current != null && player != null && player.getSymbol() == (current.getSymbol()) && player.getNext() != current.getNext()) {
@@ -689,7 +654,6 @@ public class SnakesAndLadders{
 			movePlayerNodeUp(current,player,position);
 		}
 	}
-
 
 	
 	private void movePlayerNodeUp(Node current, Player player, int position) {
