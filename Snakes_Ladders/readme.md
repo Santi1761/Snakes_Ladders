@@ -1,7 +1,5 @@
 # snakes-and-ladders
 
-* Project made with: Eclipse-IDE For java developers
-
 * Language: Java 8
 
 * Project carried out by: Santiago Arboleda Velasco -> https://github.com/Santi1761
